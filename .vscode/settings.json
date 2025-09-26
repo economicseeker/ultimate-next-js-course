@@ -4,7 +4,8 @@
   "editor.wordWrap": "on",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.addMissingImports": "explicit"
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit"
   },
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
