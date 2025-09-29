@@ -1,3 +1,4 @@
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
@@ -13,11 +14,15 @@ const questions = [
       { _id: "1", name: "React" },
       { _id: "2", name: "JavaScript" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image: "https://ui.shadcn.com/avatars/03.png",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
-    createdAt: new Date(),
+    createdAt: new Date(""),
   },
   {
     _id: "2",
@@ -25,13 +30,17 @@ const questions = [
     description: "I want to learn JavaScript, can anyone help me?",
     tags: [
       { _id: "1", name: "JavaScript" },
-      { _id: "2", name: "JavaScript" },
+      { _id: "2", name: "Next.js" },
     ],
-    author: { _id: "1", name: "John Doe" },
+    author: {
+      _id: "1",
+      name: "John Doe",
+      image: "https://ui.shadcn.com/avatars/05.png",
+    },
     upvotes: 10,
     answers: 5,
     views: 100,
-    createdAt: new Date(),
+    createdAt: new Date("2025-01-01"),
   },
 ];
 
@@ -74,7 +83,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="flex flex-col w-full mt-10 gap-6">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
