@@ -14,6 +14,7 @@ interface Question {
   title: string;
   tags: Tag[];
   author: Author;
+  createdAt: Date;
   upvotes: number;
   answers: number;
   views: number;
@@ -30,13 +31,8 @@ type ActionResponse<T = null> = {
   status?: number;
 };
 
-type SuccessResponse<T = null> = ActionResponse<T> & {
-  success: true;
-};
-
-type ErrorResponse = ActionResponse<undefined> & {
-  success: false;
-};
+type SuccessResponse<T = null> = ActionResponse<T> & { success: true };
+type ErrorResponse = ActionResponse<undefined> & { success: false };
 
 type APIErrorResponse = NextResponse<ErrorResponse>;
 type APIResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
