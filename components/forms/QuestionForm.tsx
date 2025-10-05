@@ -175,6 +175,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                   value={field.value}
                   editorRef={editorRef}
                   fieldChange={field.onChange}
+                  className="rounded-md focus:ring-2 focus:ring-primary-500"
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
