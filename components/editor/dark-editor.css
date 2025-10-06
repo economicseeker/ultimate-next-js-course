@@ -25,7 +25,8 @@
   --baseBorderHover: var(--mauve-8);
   --baseSolid: var(--mauve-9);
   --baseSolidHover: var(--mauve-10);
-  --baseText: var(--mauve-11);
+  /* Use high-contrast text in dark mode */
+  --baseText: var(--mauve-12);
   --baseTextContrast: var(--mauve-12);
 
   --admonitionTipBg: var(--cyan4);
@@ -59,7 +60,70 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
-  color: var(--baseText);
+  color: var(--baseTextContrast);
   --basePageBg: black;
   background: var(--basePageBg);
+}
+
+/* Ensure editor content area uses light text in dark mode */
+.dark .dark-editor .mdxeditor-root-contenteditable {
+  color: var(--baseTextContrast) !important;
+  caret-color: var(--baseTextContrast) !important;
+}
+/* Common block/inline elements within the contenteditable area */
+.dark .dark-editor .mdxeditor-root-contenteditable p,
+.dark .dark-editor .mdxeditor-root-contenteditable div,
+.dark .dark-editor .mdxeditor-root-contenteditable span,
+.dark .dark-editor .mdxeditor-root-contenteditable li,
+.dark .dark-editor .mdxeditor-root-contenteditable h1,
+.dark .dark-editor .mdxeditor-root-contenteditable h2,
+.dark .dark-editor .mdxeditor-root-contenteditable h3,
+.dark .dark-editor .mdxeditor-root-contenteditable h4,
+.dark .dark-editor .mdxeditor-root-contenteditable h5,
+.dark .dark-editor .mdxeditor-root-contenteditable h6,
+.dark .dark-editor .mdxeditor-root-contenteditable strong,
+.dark .dark-editor .mdxeditor-root-contenteditable em,
+.dark .dark-editor .mdxeditor-root-contenteditable code,
+.dark .dark-editor .mdxeditor-root-contenteditable pre {
+  color: var(--baseTextContrast) !important;
+}
+/* Fallback for any contenteditable root */
+.dark .dark-editor [contenteditable="true"] {
+  color: var(--baseTextContrast) !important;
+  caret-color: var(--baseTextContrast) !important;
+}
+
+/* Make sure all descendants inside the editable area inherit light text */
+.dark .dark-editor .mdxeditor-root-contenteditable * {
+  color: var(--baseTextContrast) !important;
+}
+
+/* Lexical root (used by MDXEditor under the hood) */
+.dark .dark-editor [data-lexical-editor="true"] {
+  color: var(--baseTextContrast) !important;
+  caret-color: var(--baseTextContrast) !important;
+}
+
+/* Placeholder text for editors */
+.dark .dark-editor .cm-placeholder,
+.dark .dark-editor .mdxeditor-root-contenteditable [data-placeholder],
+.dark .dark-editor [data-lexical-editor="true"] [data-placeholder] {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+/* CodeMirror editor text in dark mode */
+.dark .dark-editor .cm-editor,
+.dark .dark-editor .cm-content,
+.dark .dark-editor .cm-line {
+  color: var(--baseTextContrast) !important;
+  caret-color: var(--baseTextContrast) !important;
+}
+/* Ensure scroller container also inherits light text */
+.dark .dark-editor .cm-scroller {
+  color: var(--baseTextContrast) !important;
+}
+
+/* Links within editor content */
+.dark .dark-editor a {
+  color: var(--accentTextContrast) !important;
 }
