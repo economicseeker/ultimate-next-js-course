@@ -36,7 +36,7 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
   } = await getAnswers({
     questionId: id,
     page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
+    pageSize: Number(pageSize) || 2,
     filter,
   });
 
@@ -133,6 +133,8 @@ const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
 
       <section className="my-5">
         <AllAnswers
+          isNext={answersResult?.isNext || false}
+          page={Number(page) || 1}
           data={answersResult?.answers}
           success={areAnswersLoaded}
           error={answersError}
