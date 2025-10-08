@@ -1,5 +1,5 @@
 "use client";
-import { formUrlQuery, removeKeyFromUrlQuery } from "@/lib/url";
+import { formUrlQuery, removeKeysFromUrlQuery } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -23,7 +23,7 @@ const HomeFilter = () => {
 
     if (filter === active) {
       setActive("");
-      newUrl = removeKeyFromUrlQuery({
+      newUrl = removeKeysFromUrlQuery({
         params: searchParams.toString(),
         keysToRemove: ["filter"],
       });
