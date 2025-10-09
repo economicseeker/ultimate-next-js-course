@@ -85,10 +85,6 @@ export const metadata = {
   },
 };
 
-export const viewport = {
-  themeColor: "#18181b",
-};
-
 const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
 
