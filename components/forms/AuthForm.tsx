@@ -7,11 +7,10 @@ import {
   DefaultValues,
   FieldValues,
   Path,
-  type Resolver,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { ZodType } from "zod";
+import { z, ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -27,7 +26,7 @@ import ROUTES from "@/constants/routes";
 import { toast } from "sonner";
 
 interface AuthFormProps<T extends FieldValues> {
-  schema: ZodType<any>;
+  schema: ZodType<T>;
   defaultValues: T;
   onSubmit: (data: T) => Promise<ActionResponse>;
   formType: "SIGN_IN" | "SIGN_UP";
@@ -41,8 +40,8 @@ const AuthForm = <T extends FieldValues>({
 }: AuthFormProps<T>) => {
   const router = useRouter();
 
-  const form = useForm<T>({
-    resolver: zodResolver(schema) as unknown as Resolver<T>,
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
@@ -61,6 +60,7 @@ const AuthForm = <T extends FieldValues>({
     } else {
       toast.error(`Error ${result?.status}`, {
         description: result?.error?.message,
+        variant: "destructive",
       });
     }
   };
