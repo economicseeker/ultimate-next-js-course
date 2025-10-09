@@ -1,15 +1,17 @@
 "use client";
 
-import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   DefaultValues,
   FieldValues,
   Path,
+  type Resolver,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { z, ZodType } from "zod";
+import { ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +24,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 interface AuthFormProps<T extends FieldValues> {
@@ -40,8 +41,8 @@ const AuthForm = <T extends FieldValues>({
 }: AuthFormProps<T>) => {
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof schema>>({
-    resolver: standardSchemaResolver(schema),
+  const form = useForm<T>({
+    resolver: zodResolver(schema) as unknown as Resolver<T>,
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
@@ -58,7 +59,7 @@ const AuthForm = <T extends FieldValues>({
 
       router.push(ROUTES.HOME);
     } else {
-      toast.error("Error", {
+      toast.error(`Error ${result?.status}`, {
         description: result?.error?.message,
       });
     }
