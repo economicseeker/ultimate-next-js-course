@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         name,
         username: slugifiedUsername,
         email,
-        image,
+        image: image || "",
       });
     } else {
       const updatedData: { name?: string; image?: string } = {};
