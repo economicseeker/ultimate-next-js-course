@@ -79,7 +79,6 @@ export const metadata = {
     ],
   },
 
-  // Optional: Color for Microsoft tiles and pinned sites
   msapplication: {
     TileColor: "#ffffff",
     TileImage: "/mstile-150x150.png",
