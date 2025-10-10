@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^2.0.24",
     "@ai-sdk/openai": "^2.0.47",
     "@hookform/resolvers": "^5.2.2",
     "@mdxeditor/editor": "^3.47.0",
