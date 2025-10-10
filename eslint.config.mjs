@@ -1,27 +1,38 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
 import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 });
 
 const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "standard",
-    // "plugin:tailwindcss/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ),
   {
     rules: {
-      "no-undef": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          trailingComma: "es5",
+          semi: true,
+          tabWidth: 2,
+          printWidth: 80,
+          endOfLine: "auto",
+          arrowParens: "always",
+          plugins: ["prettier-plugin-tailwindcss"],
+        },
+        {
+          usePrettierrc: false,
+        },
+      ],
     },
   },
   {

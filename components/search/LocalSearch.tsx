@@ -67,7 +67,7 @@ const LocalSearch = ({
       <Input
         type="text"
         placeholder={placeholder}
-        className="paragraph-regular no-focus placeholder text-dark400_light700 border-none shadow-none outline-none background-transparent dark:bg-transparent"
+        className="paragraph-regular no-focus placeholder text-dark400_light700 background-transparent border-none shadow-none outline-none dark:bg-transparent"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

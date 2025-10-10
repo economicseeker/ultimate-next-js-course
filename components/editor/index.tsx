@@ -52,7 +52,7 @@ const Editor = forwardRef<MDXEditorMethods, Props>(
         key={resolvedTheme}
         markdown={value}
         ref={ref}
-        className={`background-light800_dark200 light-border-2 markdown-editor dark-editor w-full border grid ${className ?? ""}`}
+        className={`background-light800_dark200 light-border-2 markdown-editor dark-editor grid w-full border ${className ?? ""}`}
         onChange={fieldChange}
         plugins={[
           headingsPlugin(),

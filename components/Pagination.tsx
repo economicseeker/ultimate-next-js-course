@@ -33,7 +33,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
   return (
     <div
       className={cn(
-        "flex w-full items-center justify-center gap-2 mt-5",
+        "mt-5 flex w-full items-center justify-center gap-2",
         containerClasses
       )}
     >
@@ -47,7 +47,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
         </Button>
       )}
 
-      <div className="flex items-center justify-center rounded-md bg-primary-500 px-3.5 py-2">
+      <div className="bg-primary-500 flex items-center justify-center rounded-md px-3.5 py-2">
         <p className="body-semibold text-light-900">{page}</p>
       </div>
 
