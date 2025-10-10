@@ -107,7 +107,8 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
             description: "Question updated successfully",
           });
 
-          if (result.data) router.push(ROUTES.QUESTION(result.data._id));
+          if (result.data)
+            router.push(ROUTES.QUESTION(result.data._id as string));
         } else {
           toast.error("Error", {
             description: result.error?.message || "Something went wrong",
@@ -173,7 +174,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
               <FormControl>
                 <Editor
                   value={field.value}
-                  editorRef={editorRef}
+                  ref={editorRef}
                   fieldChange={field.onChange}
                   className="focus:ring-primary-500 rounded-md focus:ring-2"
                 />
